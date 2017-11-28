@@ -8,10 +8,10 @@ import java.util.concurrent.atomic.AtomicLong
 
 @RestController
 class GreetingController {
-    
+
     val counter = AtomicLong()
 
     @GetMapping("/greeting")
-    fun greeting(@RequestParam(value = "name", defaultValue = "world") name: String) =
+    fun greeting(@RequestParam(value = "name", required = false, defaultValue = "world") name: String) =
             Greeting(counter.incrementAndGet(), "Hello $name")
 }

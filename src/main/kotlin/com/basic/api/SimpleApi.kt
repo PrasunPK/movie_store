@@ -6,6 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication
 class SimpleApi
 
-fun main(args: Array<String>) {
-    SpringApplication.run(SimpleApi::class.java, *args)
+    fun main(args: Array<String>) {
+        SpringApplication.run(SimpleApi::class.java, *args)
 }

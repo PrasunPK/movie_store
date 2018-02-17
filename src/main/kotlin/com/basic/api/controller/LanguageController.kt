@@ -1,16 +1,19 @@
 package com.basic.api.controller
 
 import com.basic.api.model.Language
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/language")
 class LanguageController {
 
+    private val languages: MutableList<Language> = ArrayList()
+
     @PostMapping("/new")
     fun addLanguage(@RequestBody name: String) =
-            Language(name)
+            languages.add(Language(name))
+
+
+    @GetMapping("/all")
+    fun getAllLanguages() = languages
 }

@@ -1,6 +1,7 @@
 package com.basic.api.controller
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,6 +21,14 @@ class LanguageControllerTest {
     fun testPOSTNewLanguage() {
         val result = testRestTemplate
                 .postForEntity("/language/new", "English", String::class.java)
+        assertThat(result.statusCode).isEqualTo(HttpStatus.OK)
+    }
+
+    @Test
+    fun testGETAllLanguages() {
+        val result = testRestTemplate
+                .getForEntity("/language/all", String::class.java)
+        assertEquals(result.body, "[]")
         assertThat(result.statusCode).isEqualTo(HttpStatus.OK)
     }
 }
